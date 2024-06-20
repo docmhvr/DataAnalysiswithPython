@@ -50,8 +50,8 @@ def draw_box_plot():
     # Prepare data for box plots (this part is done!)
     df_box = df.copy()
     df_box.reset_index(inplace=True)
-    df_box['year'] = [d.year for d in df_box.date]
-    df_box['month'] = [d.strftime('%b') for d in df_box.date]
+    df_box['year'] = df_box['date'].dt.year
+    df_box['month'] = df_box['date'].dt.strftime('%b')
 
     # Draw box plots (using Seaborn)
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 10))
